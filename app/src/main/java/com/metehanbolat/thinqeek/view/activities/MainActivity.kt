@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.metehanbolat.thinqeek.R
 import com.metehanbolat.thinqeek.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : AppCompatActivity() {
 

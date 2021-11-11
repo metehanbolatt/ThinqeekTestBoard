@@ -16,7 +16,6 @@ import com.metehanbolat.thinqeek.databinding.FragmentMoviesBinding
 import com.metehanbolat.thinqeek.model.Movies
 import com.metehanbolat.thinqeek.viewmodel.MoviesFragmentViewModel
 
-
 class MoviesFragment : Fragment() {
 
     private var _binding: FragmentMoviesBinding? = null

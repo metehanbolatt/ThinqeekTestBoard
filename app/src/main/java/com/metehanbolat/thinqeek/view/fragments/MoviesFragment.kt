@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,6 +27,8 @@ class MoviesFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var movieList: ArrayList<Movies>
     private lateinit var movieAdapter: MoviesRecyclerAdapter
+
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +51,11 @@ class MoviesFragment : Fragment() {
         viewModel.getFilm(firestore, requireContext(), movieList, movieAdapter)
         binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         binding.recyclerView.adapter = movieAdapter
+
+        binding.adminButton.setOnClickListener {
+            navController = findNavController()
+            navController.navigate(R.id.action_moviesFragment_to_adminFragment)
+        }
     }
 
     override fun onDestroyView() {

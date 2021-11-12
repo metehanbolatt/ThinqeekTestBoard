@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    tools:context=".view.fragments.AdminFragment">
+
+    <ImageView
+        android:id="@+id/movieImage"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/movieName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sign_up_edit_text_background"
+        android:hint="Movie Name"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/movieImage"
+        app:layout_constraintEnd_toEndOf="@id/movieImage"
+        app:layout_constraintTop_toBottomOf="@id/movieImage" />
+
+    <EditText
+        android:id="@+id/movieYear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:hint="Movie Year"
+        android:textColor="@color/black"
+        android:background="@drawable/sign_up_edit_text_background"
+        app:layout_constraintTop_toBottomOf="@id/movieName"
+        app:layout_constraintStart_toStartOf="@id/movieName"
+        app:layout_constraintEnd_toEndOf="@id/movieName" />
+
+    <EditText
+        android:id="@+id/movieComment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Movie Comment"
+        android:textColor="@color/black"
+        android:background="@drawable/sign_up_edit_text_background"
+        app:layout_constraintStart_toStartOf="@id/movieYear"
+        app:layout_constraintEnd_toEndOf="@id/movieYear"
+        app:layout_constraintTop_toBottomOf="@id/movieYear"
+        app:layout_constraintBottom_toTopOf="@id/addButton"/>
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,5 +9,18 @@
         android:id="@+id/moviesFragment"
         android:name="com.metehanbolat.thinqeek.view.fragments.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_moviesFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.metehanbolat.thinqeek.view.fragments.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_adminFragment_to_moviesFragment"
+            app:destination="@id/moviesFragment" />
+    </fragment>
 </navigation>

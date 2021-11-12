@@ -46,5 +46,18 @@
             android:name="rate"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_detailsMovieFragment_to_bigMovieImageFragment"
+            app:destination="@id/bigMovieImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bigMovieImageFragment"
+        android:name="com.metehanbolat.thinqeek.view.fragments.BigMovieImageFragment"
+        android:label="fragment_big_movie_image"
+        tools:layout="@layout/fragment_big_movie_image" >
+        <argument
+            android:name="downloadUrl"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

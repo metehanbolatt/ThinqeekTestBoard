@@ -27,6 +27,7 @@
         android:id="@+id/detailsMovieImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:transitionName="image_small"
         android:src="@drawable/ic_launcher_background"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@id/detailsMovieName"

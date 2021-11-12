@@ -8,6 +8,19 @@
     android:background="@color/black"
     tools:context=".view.fragments.UserSignUpFragment">
 
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:fontFamily="@font/days"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <EditText
         android:id="@+id/emailText"
         android:layout_width="match_parent"
@@ -18,27 +31,31 @@
         android:background="@drawable/sign_up_edit_text_background"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-        android:layout_marginTop="150dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_email"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/appName" />
 
     <EditText
         android:id="@+id/passwordText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Şifre"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_password"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:background="@drawable/sign_up_edit_text_background"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
@@ -51,7 +68,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Sign Up"
+        android:text="Kayıt Ol"
+        android:textAllCaps="false"
+        android:backgroundTint="#C51162"
         app:layout_constraintStart_toStartOf="@id/passwordText"
         app:layout_constraintEnd_toEndOf="@id/passwordText"
         app:layout_constraintTop_toBottomOf="@id/passwordText" />

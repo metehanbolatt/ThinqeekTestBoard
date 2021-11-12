@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import com.metehanbolat.thinqeek.R
 import com.metehanbolat.thinqeek.databinding.FragmentDetailsMovieBinding
 import com.squareup.picasso.Picasso
@@ -27,18 +29,18 @@ class DetailsMovieFragment : Fragment() {
         _binding = FragmentDetailsMovieBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         arguments?.let {
             movieName = DetailsMovieFragmentArgs.fromBundle(it).name!!
             movieComment = DetailsMovieFragmentArgs.fromBundle(it).comment!!
             movieDownloadUrl = DetailsMovieFragmentArgs.fromBundle(it).downloadUrl!!
             movieRate = DetailsMovieFragmentArgs.fromBundle(it).rate!!
         }
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         Picasso.get().load(movieDownloadUrl).into(binding.detailsMovieImageView)
         binding.detailsMovieComment.text = movieComment
@@ -71,6 +73,12 @@ class DetailsMovieFragment : Fragment() {
                 binding.fourthStar.setImageResource(R.drawable.ic_orange_star)
                 binding.fifthStar.setImageResource(R.drawable.ic_orange_star)
             }
+        }
+
+        binding.detailsMovieImageView.setOnClickListener {
+            val extras = FragmentNavigatorExtras(binding.detailsMovieImageView to "image_big")
+            val action = DetailsMovieFragmentDirections.actionDetailsMovieFragmentToBigMovieImageFragment(movieDownloadUrl)
+            findNavController().navigate(action,extras)
         }
     }
 

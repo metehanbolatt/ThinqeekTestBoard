@@ -101,20 +101,30 @@ class AdminFragment : Fragment() {
                 imageReference.putFile(selectedPicture!!).addOnCompleteListener{ task ->
                     if (task.isSuccessful) {
                         val uploadPictureReference = storage.reference.child("images").child(imageName)
-                        uploadPictureReference.downloadUrl.addOnSuccessListener {
+                        uploadPictureReference.downloadUrl.addOnSuccessListener { it ->
                             val downloadUrl = it.toString()
                             val movieMap = hashMapOf<String, Any>()
                             movieMap["name"] = binding.movieName.text.toString()
                             movieMap["year"] = binding.movieYear.text.toString()
                             movieMap["comment"] = binding.movieComment.text.toString()
+                            movieMap["rate"] = binding.movieRate.text.toString()
                             movieMap["downloadUrl"] = downloadUrl
 
+                            firestore.collection("Movies").document(binding.movieName.text.toString()).set(movieMap).addOnSuccessListener {
+                                navController = findNavController()
+                                navController.navigate(R.id.action_adminFragment_to_moviesFragment)
+                            }.addOnFailureListener { e ->
+                                Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
+                            }
+                            /*
                             firestore.collection("Movies").add(movieMap).addOnSuccessListener {
                                 navController = findNavController()
                                 navController.navigate(R.id.action_adminFragment_to_moviesFragment)
-                            }.addOnFailureListener {
-                                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
+                            }.addOnFailureListener { e ->
+                                Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
                             }
+
+                             */
 
                         }
                     }

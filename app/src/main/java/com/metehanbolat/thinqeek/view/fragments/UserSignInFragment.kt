@@ -51,11 +51,6 @@ class UserSignInFragment : Fragment() {
             viewModel.isLoading.value = true
             viewModel.signInUser(binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
         }
-
-        binding.goSignUp.setOnClickListener {
-            navController = findNavController()
-            navController.navigate(R.id.action_userSignInFragment_to_userSignUpFragment)
-        }
     }
 
     override fun onDestroyView() {

@@ -20,7 +20,14 @@ class MoviesFragmentViewModel : ViewModel() {
                         val movies = value.documents
                         movieList.clear()
                         for (movie in movies){
-                            val myMovie = Movies(movie["name"].toString(), movie["year"].toString(), movie["comment"].toString(), movie["downloadUrl"].toString())
+                            val myMovie = Movies(
+                                movie["name"].toString(),
+                                movie["year"].toString(),
+                                movie["comment"].toString(),
+                                movie["rate"].toString(),
+                                movie["downloadUrl"].toString()
+
+                            )
                             movieList.add(myMovie)
                         }
 

@@ -23,27 +23,49 @@
         android:layout_height="wrap_content"
         android:background="@drawable/sign_up_edit_text_background"
         android:hint="Movie Name"
+        android:maxLines="1"
         android:layout_marginTop="20dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:padding="10dp"
+        android:padding="5dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/movieImage"
         app:layout_constraintEnd_toEndOf="@id/movieImage"
         app:layout_constraintTop_toBottomOf="@id/movieImage" />
 
-    <EditText
-        android:id="@+id/movieYear"
+    <LinearLayout
+        android:id="@+id/movieYearRateLinear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:hint="Movie Year"
-        android:textColor="@color/black"
-        android:background="@drawable/sign_up_edit_text_background"
-        app:layout_constraintTop_toBottomOf="@id/movieName"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="@id/movieName"
-        app:layout_constraintEnd_toEndOf="@id/movieName" />
+        app:layout_constraintEnd_toEndOf="@id/movieName"
+        app:layout_constraintTop_toBottomOf="@id/movieName">
+
+        <EditText
+            android:id="@+id/movieYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:hint="Movie Year"
+            android:inputType="number"
+            android:layout_marginEnd="50dp"
+            android:textColor="@color/black"
+            android:background="@drawable/sign_up_edit_text_background" />
+
+        <EditText
+            android:id="@+id/movieRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:inputType="number"
+            android:hint="Movie Rate"
+            android:textColor="@color/black"
+            android:background="@drawable/sign_up_edit_text_background" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/movieComment"
@@ -55,9 +77,9 @@
         android:hint="Movie Comment"
         android:textColor="@color/black"
         android:background="@drawable/sign_up_edit_text_background"
-        app:layout_constraintStart_toStartOf="@id/movieYear"
-        app:layout_constraintEnd_toEndOf="@id/movieYear"
-        app:layout_constraintTop_toBottomOf="@id/movieYear"
+        app:layout_constraintStart_toStartOf="@id/movieYearRateLinear"
+        app:layout_constraintEnd_toEndOf="@id/movieYearRateLinear"
+        app:layout_constraintTop_toBottomOf="@id/movieYearRateLinear"
         app:layout_constraintBottom_toTopOf="@id/addButton"/>
 
     <Button

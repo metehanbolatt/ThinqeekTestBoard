@@ -40,7 +40,7 @@ class MoviesFragment : Fragment() {
         viewModel = MoviesFragmentViewModel()
         firestore = Firebase.firestore
         movieList = ArrayList()
-        movieAdapter = MoviesRecyclerAdapter(movieList)
+        movieAdapter = MoviesRecyclerAdapter(requireContext(), movieList)
 
         return view
     }

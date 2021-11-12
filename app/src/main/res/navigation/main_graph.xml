@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_moviesFragment_to_adminFragment"
             app:destination="@id/adminFragment" />
+        <action
+            android:id="@+id/action_moviesFragment_to_detailsMovieFragment"
+            app:destination="@id/detailsMovieFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminFragment"
@@ -22,5 +25,26 @@
         <action
             android:id="@+id/action_adminFragment_to_moviesFragment"
             app:destination="@id/moviesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsMovieFragment"
+        android:name="com.metehanbolat.thinqeek.view.fragments.DetailsMovieFragment"
+        android:label="fragment_details_movie"
+        tools:layout="@layout/fragment_details_movie" >
+        <argument android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="comment"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="downloadUrl"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="rate"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

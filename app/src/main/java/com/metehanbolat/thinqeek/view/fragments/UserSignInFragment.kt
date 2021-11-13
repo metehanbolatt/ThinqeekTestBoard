@@ -1,5 +1,6 @@
 package com.metehanbolat.thinqeek.view.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -47,6 +48,11 @@ class UserSignInFragment : Fragment() {
             }
         }
 
+        binding.signUpText.setOnClickListener {
+            navController = findNavController()
+            navController.navigate(R.id.action_userSignInFragment_to_userSignUpFragment)
+        }
+
         binding.signInButton.setOnClickListener {
             viewModel.isLoading.value = true
             viewModel.signInUser(binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
@@ -58,14 +64,22 @@ class UserSignInFragment : Fragment() {
         _binding = null
     }
 
-    fun visible(){
+    private fun visible(){
         binding.emailText.visibility = View.VISIBLE
         binding.passwordText.visibility = View.VISIBLE
+        binding.lottieWait.visibility = View.INVISIBLE
+        binding.signInButton.visibility = View.VISIBLE
+        binding.areYouNewText.visibility = View.VISIBLE
+        binding.signUpText.visibility = View.VISIBLE
     }
 
-    fun invisible(){
+    private fun invisible(){
         binding.emailText.visibility = View.INVISIBLE
         binding.passwordText.visibility = View.INVISIBLE
+        binding.lottieWait.visibility = View.VISIBLE
+        binding.signInButton.visibility = View.INVISIBLE
+        binding.areYouNewText.visibility = View.INVISIBLE
+        binding.signUpText.visibility = View.INVISIBLE
     }
 
 }

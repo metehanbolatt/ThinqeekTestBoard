@@ -12,9 +12,7 @@ class MoviesFragmentViewModel : ViewModel() {
 
     fun getFilm(firestore: FirebaseFirestore, context: Context, movieList: ArrayList<Movies>, adapter: MoviesRecyclerAdapter){
         firestore.collection("Movies").addSnapshotListener { value, error ->
-            if (error != null){
-                Toast.makeText(context, error.localizedMessage, Toast.LENGTH_SHORT).show()
-            }else{
+            if (error == null){
                 if (value != null){
                     if (!value.isEmpty){
                         val movies = value.documents
@@ -30,7 +28,6 @@ class MoviesFragmentViewModel : ViewModel() {
                             )
                             movieList.add(myMovie)
                         }
-
                         adapter.notifyDataSetChanged()
                     }
                 }

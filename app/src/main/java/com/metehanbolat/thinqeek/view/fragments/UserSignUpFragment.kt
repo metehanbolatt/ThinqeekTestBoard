@@ -10,7 +10,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.metehanbolat.thinqeek.databinding.FragmentUserSignUpBinding
 import com.metehanbolat.thinqeek.viewmodel.UserSignUpFragmentViewModel
-import javax.inject.Inject
 
 class UserSignUpFragment : Fragment() {
 
@@ -35,7 +34,17 @@ class UserSignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.isLoading.observe(viewLifecycleOwner){ isLoading ->
+            if (isLoading){
+                invisible()
+            }else{
+                visible()
+            }
+        }
+
         binding.signUpButton.setOnClickListener {
+            viewModel.isLoading.value = true
             viewModel.signUpUser(binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
         }
     }
@@ -43,6 +52,20 @@ class UserSignUpFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun visible(){
+        binding.emailText.visibility = View.VISIBLE
+        binding.passwordText.visibility = View.VISIBLE
+        binding.lottieWait.visibility = View.INVISIBLE
+        binding.signUpButton.visibility = View.VISIBLE
+    }
+
+    private fun invisible(){
+        binding.emailText.visibility = View.INVISIBLE
+        binding.passwordText.visibility = View.INVISIBLE
+        binding.lottieWait.visibility = View.VISIBLE
+        binding.signUpButton.visibility = View.INVISIBLE
     }
 
 }

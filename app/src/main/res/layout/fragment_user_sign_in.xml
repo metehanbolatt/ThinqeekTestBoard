@@ -31,6 +31,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingStart="10dp"
+        android:inputType="textEmailAddress"
         android:paddingEnd="10dp"
         android:drawablePadding="10dp"
         android:background="@drawable/sign_up_edit_text_background"
@@ -47,6 +48,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:inputType="textPassword"
         android:hint="Şifre"
         android:drawablePadding="10dp"
         android:paddingStart="10dp"
@@ -100,7 +102,16 @@
 
     </LinearLayout>
 
-
-
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieWait"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:lottie_rawRes="@raw/dots"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appName"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

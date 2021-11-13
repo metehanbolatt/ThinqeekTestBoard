@@ -39,10 +39,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:backgroundTint="#DD2C00"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Add" />
+        android:textAllCaps="false"
+        android:text="Film Ekle" />
 
     <ImageView
         android:id="@+id/exitImage"

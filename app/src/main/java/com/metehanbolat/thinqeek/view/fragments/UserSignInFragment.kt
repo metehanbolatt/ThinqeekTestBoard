@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -53,8 +54,13 @@ class UserSignInFragment : Fragment() {
         }
 
         binding.signInButton.setOnClickListener {
-            viewModel.isLoading.value = true
-            viewModel.signInUser(it, binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
+            if (binding.emailText.text.toString() == "" || binding.passwordText.text.toString() == ""){
+                Snackbar.make(it, "Lütfen boş alan bırakmayınız..", Snackbar.LENGTH_SHORT).show()
+            }else{
+                viewModel.isLoading.value = true
+                viewModel.signInUser(it, binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
+            }
+
         }
     }
 

@@ -76,6 +76,7 @@
         app:layout_constraintTop_toBottomOf="@id/passwordText" />
 
     <LinearLayout
+        android:id="@+id/textLinear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -101,6 +102,19 @@
             android:textColor="#DD2C00" />
 
     </LinearLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerImageSlider"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textLinear" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieWait"

@@ -48,7 +48,7 @@ class MoviesFragment : Fragment() {
         firestore = Firebase.firestore
         auth = Firebase.auth
         movieList = ArrayList()
-        movieAdapter = MoviesRecyclerAdapter(requireContext(), movieList)
+        movieAdapter = MoviesRecyclerAdapter(requireContext(), movieList, viewModel, viewLifecycleOwner)
 
         getAdminData()
 
@@ -58,7 +58,7 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getFilm(firestore, requireContext(), movieList, movieAdapter)
+        viewModel.getFilm(firestore, movieList, movieAdapter)
         binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         binding.recyclerView.adapter = movieAdapter
 
@@ -91,12 +91,12 @@ class MoviesFragment : Fragment() {
     private fun getAdminData(){
         firestore.collection("Admin").document("Admin").get().addOnSuccessListener { document ->
             if (document != null){
-                adminOneEmail = document["admin_one"] as String
-                adminTwoEmail = document["admin_two"] as String
+                adminOneEmail = document["metehan"] as String
+                adminTwoEmail = document["kutay"] as String
             }
             adminControl()
+            viewModel.isClickable.value = true
         }
-
     }
 
 }

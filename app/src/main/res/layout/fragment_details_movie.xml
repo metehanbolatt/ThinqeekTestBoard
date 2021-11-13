@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    app:layoutDescription="@xml/fragment_details_movie_scene"
     tools:context=".view.fragments.DetailsMovieFragment">
 
     <TextView
@@ -29,7 +29,6 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_launcher_background"
         android:transitionName="image_small"
         app:layout_constraintEnd_toEndOf="@id/detailsMovieName"
         app:layout_constraintStart_toStartOf="@id/detailsMovieName"
@@ -80,7 +79,7 @@
     <TextView
         android:id="@+id/detailsMovieComment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
@@ -88,7 +87,6 @@
         android:justificationMode="inter_word"
         android:text="Deneme "
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/commentsText"
         app:layout_constraintEnd_toEndOf="@id/starsLinearLayout"
         app:layout_constraintStart_toStartOf="@id/starsLinearLayout"
         app:layout_constraintTop_toBottomOf="@id/starsLinearLayout" />
@@ -97,24 +95,35 @@
         android:id="@+id/commentsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
         android:text="Yorumlar"
         android:textColor="#00C853"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/chatRecycler"
-        app:layout_constraintStart_toStartOf="@id/chatRecycler" />
+        app:layout_constraintStart_toStartOf="@id/detailsMovieComment"
+        app:layout_constraintTop_toBottomOf="@id/detailsMovieComment" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecycler"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/addChat"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/commentsText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/emptyRecyclerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="İlk yorumu siz yazın.."
+        android:visibility="invisible"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/commentsText"
+        app:layout_constraintTop_toBottomOf="@id/commentsText" />
 
     <EditText
         android:id="@+id/addChat"
@@ -130,6 +139,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -142,8 +152,9 @@
         android:background="@color/purple_500"
         android:padding="3dp"
         android:src="@drawable/ic_send"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/addChat"
         app:layout_constraintEnd_toEndOf="@id/addChat"
         app:layout_constraintTop_toTopOf="@id/addChat" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

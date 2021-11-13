@@ -40,6 +40,9 @@ class DetailsMovieFragment : Fragment() {
     private var movieDownloadUrl = ""
     private var movieRate = ""
 
+    private var adminOneEmail = ""
+    private var adminTwoEmail = ""
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,11 +64,21 @@ class DetailsMovieFragment : Fragment() {
             movieRate = DetailsMovieFragmentArgs.fromBundle(it).rate!!
         }
 
+        getAdminData()
+
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.listIsNotEmpty.observe(viewLifecycleOwner){
+            if (it){
+                binding.emptyRecyclerText.visibility = View.INVISIBLE
+            }else{
+                binding.emptyRecyclerText.visibility = View.VISIBLE
+            }
+        }
 
         viewModel.getChat(movieName, firestore, chatList, chatAdapter)
         binding.chatRecycler.layoutManager = LinearLayoutManager(requireContext())
@@ -85,9 +98,9 @@ class DetailsMovieFragment : Fragment() {
 
         binding.addChatButton.setOnClickListener {
             if (binding.addChat.text.toString() == ""){
-                addChat(it)
-            }else{
                 Snackbar.make(it, "Lütfen yorumunuzu yazın..", Snackbar.LENGTH_SHORT).show()
+            }else{
+                addChat(it)
             }
         }
     }
@@ -107,6 +120,27 @@ class DetailsMovieFragment : Fragment() {
             Snackbar.make(view, "Yorumun eklendi.", Snackbar.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Snackbar.make(view, "Bir hata meydana geldi", Snackbar.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun adminControl() {
+        val currentUser = auth.currentUser?.email.toString()
+        if (currentUser == adminOneEmail || currentUser == adminTwoEmail){
+            binding.addChatButton.visibility = View.INVISIBLE
+            binding.addChat.visibility = View.INVISIBLE
+        }else{
+            binding.addChatButton.visibility = View.VISIBLE
+            binding.addChat.visibility = View.VISIBLE
+        }
+    }
+
+    private fun getAdminData(){
+        firestore.collection("Admin").document("Admin").get().addOnSuccessListener { document ->
+            if (document != null){
+                adminOneEmail = document["metehan"] as String
+                adminTwoEmail = document["kutay"] as String
+            }
+            adminControl()
         }
     }
 

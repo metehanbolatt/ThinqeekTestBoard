@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -123,6 +124,7 @@ class AdminFragment : Fragment() {
                                     movieMap["comment"] = binding.movieComment.text.toString()
                                     movieMap["rate"] = binding.movieRate.text.toString()
                                     movieMap["downloadUrl"] = downloadUrl
+                                    movieMap["date"] = Timestamp.now()
 
                                     firestore.collection("Movies").document(binding.movieName.text.toString()).set(movieMap).addOnSuccessListener {
                                         navController = findNavController()

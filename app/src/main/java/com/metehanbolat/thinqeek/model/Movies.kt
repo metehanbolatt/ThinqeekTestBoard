@@ -5,5 +5,6 @@ data class Movies(
     var year: String,
     var comment: String,
     var rate: String,
-    var downloadUrl: String
+    var downloadUrl: String,
+    var date: String
 )

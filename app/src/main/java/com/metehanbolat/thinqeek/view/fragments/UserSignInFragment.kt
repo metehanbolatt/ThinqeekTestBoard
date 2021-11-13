@@ -7,13 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.metehanbolat.thinqeek.R
+import com.metehanbolat.thinqeek.adapter.SliderAdapter
 import com.metehanbolat.thinqeek.databinding.FragmentUserSignInBinding
+import com.metehanbolat.thinqeek.model.SliderItem
 import com.metehanbolat.thinqeek.viewmodel.UserSignInFragmentViewModel
+import kotlin.math.abs
 
 class UserSignInFragment : Fragment() {
 
@@ -22,7 +31,10 @@ class UserSignInFragment : Fragment() {
 
     private lateinit var viewModel: UserSignInFragmentViewModel
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
     private lateinit var navController: NavController
+
+    private lateinit var viewPager2: ViewPager2
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +45,42 @@ class UserSignInFragment : Fragment() {
 
         viewModel = UserSignInFragmentViewModel()
         auth = Firebase.auth
+        firestore = Firebase.firestore
+        viewPager2 = binding.viewPagerImageSlider
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sliderItems: MutableList<SliderItem> = ArrayList()
+
+        firestore.collection("SlideImage").addSnapshotListener { value, error ->
+            if (error == null){
+                if (value != null){
+                    if (!value.isEmpty){
+                        val images = value.documents
+                        for (image in images){
+                            val comingImage = SliderItem(image["image"] as String)
+                            sliderItems.add(comingImage)
+                        }
+                        viewPager2.adapter = SliderAdapter(sliderItems)
+                        viewPager2.clipToPadding = false
+                        viewPager2.clipChildren = false
+                        viewPager2.offscreenPageLimit = 3
+                        viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+                        val compositePageTransformer = CompositePageTransformer()
+                        compositePageTransformer.addTransformer(MarginPageTransformer(10))
+                        compositePageTransformer.addTransformer { page, position ->
+                            val r = 1 - abs(position)
+                            page.scaleY = 0.56f + r * 0.25f
+                        }
+                        viewPager2.setPageTransformer(compositePageTransformer)
+                    }
+                }
+            }
+        }
 
         viewModel.isLoading.observe(viewLifecycleOwner){ isLoading ->
             if (isLoading){

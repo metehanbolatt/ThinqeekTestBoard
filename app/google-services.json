@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "220644700718",
-    "project_id": "thinqeek",
-    "storage_bucket": "thinqeek.appspot.com"
+    "project_number": "798444261000",
+    "project_id": "thinqeek-22c56",
+    "storage_bucket": "thinqeek-22c56.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:220644700718:android:0e3069eec3b20cd346e5bf",
+        "mobilesdk_app_id": "1:798444261000:android:8c24ab42348c4808a1193d",
         "android_client_info": {
           "package_name": "com.metehanbolat.thinqeek"
         }
       },
       "oauth_client": [
         {
-          "client_id": "220644700718-44v1nsc18h7fid2qa3aktc6uf5s1sh2v.apps.googleusercontent.com",
+          "client_id": "798444261000-v2f0dr1de1nav6qaajjhvu1fj7e5rdnh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAHWzZGweF_eOo41MlL2-dqr6NL28SDE8w"
+          "current_key": "AIzaSyApDBt14w459W1_ljoKOI5g7IAKhqtYI2w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "220644700718-44v1nsc18h7fid2qa3aktc6uf5s1sh2v.apps.googleusercontent.com",
+              "client_id": "798444261000-v2f0dr1de1nav6qaajjhvu1fj7e5rdnh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

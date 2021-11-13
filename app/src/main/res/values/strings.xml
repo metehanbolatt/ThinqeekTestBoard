@@ -2,4 +2,10 @@
     <string name="app_name">Thinqeek</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="film_resmi">Film Resmi</string>
+    <string name="film_adi">Film adı</string>
+    <string name="yil">Yıl</string>
+    <string name="puan">Puan</string>
+    <string name="comment">Film hakkındaki yorumların...</string>
+    <string name="ekle">Ekle</string>
 </resources>

@@ -63,7 +63,6 @@ class MoviesFragment : Fragment() {
         binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         binding.recyclerView.adapter = movieAdapter
 
-
         binding.adminButton.setOnClickListener {
             navController = findNavController()
             navController.navigate(R.id.action_moviesFragment_to_adminFragment)

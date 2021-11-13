@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/chatLinearRow"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/chat_background"
+    android:padding="8dp"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/userIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_person" />
+
+        <TextView
+            android:id="@+id/chatEmailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="metehan@gmail.com"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:textColor="#FF6D00"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/chatComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="Bu film gerçekten bir harika."
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>

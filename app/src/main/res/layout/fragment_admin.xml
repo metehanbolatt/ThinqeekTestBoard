@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     tools:context=".view.fragments.AdminFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieWait"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:lottie_rawRes="@raw/dots"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
         android:id="@+id/movieImage"
@@ -21,14 +34,15 @@
         android:id="@+id/movieName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/sign_up_edit_text_background"
-        android:hint="Movie Name"
+        android:background="@drawable/add_movie_text_background"
+        android:hint="Film adı"
+        android:textColorHint="@color/white"
         android:maxLines="1"
         android:layout_marginTop="20dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:padding="5dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@id/movieImage"
         app:layout_constraintEnd_toEndOf="@id/movieImage"
         app:layout_constraintTop_toBottomOf="@id/movieImage" />
@@ -46,24 +60,28 @@
 
         <EditText
             android:id="@+id/movieYear"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:hint="Movie Year"
+            android:hint="Yıl"
+            android:textSize="16sp"
             android:inputType="number"
             android:layout_marginEnd="50dp"
-            android:textColor="@color/black"
-            android:background="@drawable/sign_up_edit_text_background" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@drawable/add_movie_text_background" />
 
         <EditText
             android:id="@+id/movieRate"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:padding="5dp"
-            android:inputType="number"
-            android:hint="Movie Rate"
-            android:textColor="@color/black"
-            android:background="@drawable/sign_up_edit_text_background" />
+            android:inputType="numberDecimal"
+            android:textColorHint="@color/white"
+            android:hint="Puan"
+            android:textColor="@color/white"
+            android:background="@drawable/add_movie_text_background" />
 
     </LinearLayout>
 
@@ -74,9 +92,11 @@
         android:layout_marginTop="20dp"
         android:padding="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Movie Comment"
-        android:textColor="@color/black"
-        android:background="@drawable/sign_up_edit_text_background"
+        android:textSize="14sp"
+        android:hint="Film hakkındaki yorumların..."
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:background="@drawable/add_movie_text_background"
         app:layout_constraintStart_toStartOf="@id/movieYearRateLinear"
         app:layout_constraintEnd_toEndOf="@id/movieYearRateLinear"
         app:layout_constraintTop_toBottomOf="@id/movieYearRateLinear"

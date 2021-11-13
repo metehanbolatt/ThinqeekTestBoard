@@ -24,7 +24,6 @@ class MoviesFragmentViewModel : ViewModel() {
                                 movie["comment"].toString(),
                                 movie["rate"].toString(),
                                 movie["downloadUrl"].toString()
-
                             )
                             movieList.add(myMovie)
                         }

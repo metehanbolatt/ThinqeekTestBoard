@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -67,7 +66,7 @@ class AdminFragment : Fragment() {
 
         movieList = ArrayList()
 
-        registerLauncher()
+        registerLauncher(view)
 
         return view
     }
@@ -75,11 +74,19 @@ class AdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.isLoading.observe(viewLifecycleOwner){
+            if (it){
+                visibleLottie()
+            }else{
+                invisibleLottie()
+            }
+        }
+
         binding.movieImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(),
                     Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
                 if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)){
-                    Snackbar.make(view,"Permission needed for gallery!", Snackbar.LENGTH_INDEFINITE).setAction("Give Permission"){
+                    Snackbar.make(view,"Galeriye erişmek için izin gerekli!", Snackbar.LENGTH_INDEFINITE).setAction("İzin ver"){
                         permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
                     }.show()
                 }else{
@@ -91,56 +98,63 @@ class AdminFragment : Fragment() {
             }
         }
 
-        binding.addButton.setOnClickListener {
-            val uuid = UUID.randomUUID()
-            val imageName = "$uuid.jpg"
-            val reference = storage.reference
-            val imageReference = reference.child("images").child(imageName)
+        binding.addButton.setOnClickListener { buttonView ->
+            if (binding.movieRate.text.toString() == "" || binding.movieComment.text.toString() == "" || binding.movieName.text.toString() == "" || binding.movieYear.text.toString() == ""){
+                Snackbar.make(buttonView, "Boş alan bırakmayın...", Snackbar.LENGTH_SHORT).show()
+            }else{
+                if (binding.movieRate.text.toString().toDouble() <= 0 || binding.movieRate.text.toString().toDouble() > 10){
+                    Snackbar.make(buttonView, "Lütfen 0 ile 10 arasında bir puanlama yapınız.", Snackbar.LENGTH_SHORT).show()
+                }else{
+                    val uuid = UUID.randomUUID()
+                    val imageName = "$uuid.jpg"
+                    val reference = storage.reference
+                    val imageReference = reference.child("images").child(imageName)
 
-            if (selectedPicture != null){
-                imageReference.putFile(selectedPicture!!).addOnCompleteListener{ task ->
-                    if (task.isSuccessful) {
-                        val uploadPictureReference = storage.reference.child("images").child(imageName)
-                        uploadPictureReference.downloadUrl.addOnSuccessListener { it ->
-                            val downloadUrl = it.toString()
-                            val movieMap = hashMapOf<String, Any>()
-                            movieMap["name"] = binding.movieName.text.toString()
-                            movieMap["year"] = binding.movieYear.text.toString()
-                            movieMap["comment"] = binding.movieComment.text.toString()
-                            movieMap["rate"] = binding.movieRate.text.toString()
-                            movieMap["downloadUrl"] = downloadUrl
+                    if (selectedPicture != null){
+                        viewModel.isLoading.value = true
+                        imageReference.putFile(selectedPicture!!).addOnCompleteListener{ task ->
+                            if (task.isSuccessful) {
+                                val uploadPictureReference = storage.reference.child("images").child(imageName)
+                                uploadPictureReference.downloadUrl.addOnSuccessListener {
+                                    val downloadUrl = it.toString()
+                                    val movieMap = hashMapOf<String, Any>()
+                                    movieMap["name"] = binding.movieName.text.toString()
+                                    movieMap["year"] = binding.movieYear.text.toString()
+                                    movieMap["comment"] = binding.movieComment.text.toString()
+                                    movieMap["rate"] = binding.movieRate.text.toString()
+                                    movieMap["downloadUrl"] = downloadUrl
 
-                            firestore.collection("Movies").document(binding.movieName.text.toString()).set(movieMap).addOnSuccessListener {
-                                navController = findNavController()
-                                navController.navigate(R.id.action_adminFragment_to_moviesFragment)
-                            }.addOnFailureListener { e ->
-                                Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
+                                    firestore.collection("Movies").document(binding.movieName.text.toString()).set(movieMap).addOnSuccessListener {
+                                        navController = findNavController()
+                                        navController.navigate(R.id.action_adminFragment_to_moviesFragment)
+                                        viewModel.isLoading.value = false
+                                    }.addOnFailureListener { e ->
+                                        Snackbar.make(buttonView, "Bir hata meydana geldi.", Snackbar.LENGTH_SHORT).show()
+                                        viewModel.isLoading.value = false
+                                    }
+
+                                }
                             }
-                            /*
-                            firestore.collection("Movies").add(movieMap).addOnSuccessListener {
-                                navController = findNavController()
-                                navController.navigate(R.id.action_adminFragment_to_moviesFragment)
-                            }.addOnFailureListener { e ->
-                                Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_SHORT).show()
-                            }
-
-                             */
-
+                        }.addOnFailureListener {
+                            Snackbar.make(buttonView, "Bir hata meydana geldi.", Snackbar.LENGTH_SHORT).show()
+                            viewModel.isLoading.value = false
                         }
+                    }else{
+                        Snackbar.make(buttonView,"Lütfen resim seçiniz",Snackbar.LENGTH_SHORT).show()
+                        viewModel.isLoading.value = false
                     }
-                }.addOnFailureListener {
-                    Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
                 }
             }
-        }
 
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding = null
     }
 
-    private fun registerLauncher(){
+    private fun registerLauncher(view: View){
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
             if (result.resultCode == RESULT_OK){
                 val intentFromResult = result.data
@@ -158,9 +172,30 @@ class AdminFragment : Fragment() {
                 val intentToGallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 activityResultLauncher.launch(intentToGallery)
             }else{
-                Toast.makeText(requireContext(), "Permission Needed", Toast.LENGTH_SHORT).show()
+                Snackbar.make(view, "İzin gerekli!", Snackbar.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun visibleLottie(){
+        binding.movieImage.visibility = View.INVISIBLE
+        binding.movieName.visibility = View.INVISIBLE
+        binding.movieComment.visibility = View.INVISIBLE
+        binding.movieRate.visibility = View.INVISIBLE
+        binding.movieYear.visibility = View.INVISIBLE
+        binding.addButton.visibility = View.INVISIBLE
+        binding.lottieWait.visibility = View.VISIBLE
+
+    }
+
+    private fun invisibleLottie(){
+        binding.movieImage.visibility = View.VISIBLE
+        binding.movieName.visibility = View.VISIBLE
+        binding.movieComment.visibility = View.VISIBLE
+        binding.movieRate.visibility = View.VISIBLE
+        binding.movieYear.visibility = View.VISIBLE
+        binding.addButton.visibility = View.VISIBLE
+        binding.lottieWait.visibility = View.INVISIBLE
     }
 
 }

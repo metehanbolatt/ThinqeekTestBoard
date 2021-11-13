@@ -16,7 +16,7 @@
         android:fontFamily="@font/days"
         android:textColor="@color/white"
         android:textSize="40sp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="110dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

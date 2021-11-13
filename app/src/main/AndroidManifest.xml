@@ -17,12 +17,14 @@
             android:exported="false" />
         <activity
             android:name=".view.activities.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

@@ -16,7 +16,7 @@
         android:fontFamily="@font/days"
         android:textColor="@color/white"
         android:textSize="40sp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="110dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -81,9 +81,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/areYouNewText"
@@ -106,15 +106,17 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerImageSlider"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="0dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/textLinear"
+        app:layout_constraintTop_toBottomOf="@id/signInButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textLinear" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieWait"

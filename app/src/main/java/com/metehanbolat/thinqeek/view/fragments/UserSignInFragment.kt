@@ -71,7 +71,7 @@ class UserSignInFragment : Fragment() {
                         viewPager2.offscreenPageLimit = 3
                         viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
                         val compositePageTransformer = CompositePageTransformer()
-                        compositePageTransformer.addTransformer(MarginPageTransformer(10))
+                        compositePageTransformer.addTransformer(MarginPageTransformer(30))
                         compositePageTransformer.addTransformer { page, position ->
                             val r = 1 - abs(position)
                             page.scaleY = 0.56f + r * 0.25f

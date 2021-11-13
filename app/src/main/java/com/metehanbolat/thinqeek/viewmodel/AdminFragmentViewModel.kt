@@ -7,5 +7,4 @@ class AdminFragmentViewModel : ViewModel() {
 
     val isLoading = MutableLiveData(false)
 
-
 }

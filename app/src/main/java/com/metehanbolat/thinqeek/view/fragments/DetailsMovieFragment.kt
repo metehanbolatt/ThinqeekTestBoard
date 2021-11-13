@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import com.metehanbolat.thinqeek.R
 import com.metehanbolat.thinqeek.adapter.MovieChatAdapter
 import com.metehanbolat.thinqeek.databinding.FragmentDetailsMovieBinding
@@ -86,7 +84,11 @@ class DetailsMovieFragment : Fragment() {
         }
 
         binding.addChatButton.setOnClickListener {
-            addChat(it)
+            if (binding.addChat.text.toString() == ""){
+                addChat(it)
+            }else{
+                Snackbar.make(it, "Lütfen yorumunuzu yazın..", Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 

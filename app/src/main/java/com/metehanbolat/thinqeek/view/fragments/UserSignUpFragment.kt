@@ -45,7 +45,7 @@ class UserSignUpFragment : Fragment() {
 
         binding.signUpButton.setOnClickListener {
             viewModel.isLoading.value = true
-            viewModel.signUpUser(binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
+            viewModel.signUpUser(it, binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
         }
     }
 

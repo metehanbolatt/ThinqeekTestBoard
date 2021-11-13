@@ -1,6 +1,5 @@
 package com.metehanbolat.thinqeek.view.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -55,7 +54,7 @@ class UserSignInFragment : Fragment() {
 
         binding.signInButton.setOnClickListener {
             viewModel.isLoading.value = true
-            viewModel.signInUser(binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
+            viewModel.signInUser(it, binding.emailText.text.toString(), binding.passwordText.text.toString(), auth, requireContext(), requireActivity())
         }
     }
 

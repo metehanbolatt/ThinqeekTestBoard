@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
         viewModel.checkCurrentUser(auth, this@MainActivity, this)
     }
 }

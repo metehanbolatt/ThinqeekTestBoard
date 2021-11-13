@@ -1,8 +1,6 @@
 package com.metehanbolat.thinqeek.viewmodel
 
 import android.content.Context
-import android.graphics.Movie
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.metehanbolat.thinqeek.adapter.MoviesRecyclerAdapter

@@ -1,11 +1,13 @@
 package com.metehanbolat.thinqeek.view.fragments
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -35,6 +37,9 @@ class MoviesFragment : Fragment() {
     private var adminOneEmail = ""
     private var adminTwoEmail = ""
 
+    private var rateControl = 0
+    private var yearControl = 0
+
     private lateinit var navController: NavController
 
     override fun onCreateView(
@@ -48,7 +53,7 @@ class MoviesFragment : Fragment() {
         firestore = Firebase.firestore
         auth = Firebase.auth
         movieList = ArrayList()
-        movieAdapter = MoviesRecyclerAdapter(requireContext(), movieList, viewModel, viewLifecycleOwner)
+        movieAdapter = MoviesRecyclerAdapter(requireContext(), movieList, viewModel)
 
         getAdminData()
 
@@ -58,7 +63,7 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getFilm(firestore, movieList, movieAdapter)
+        viewModel.getFilm("date", firestore, movieList, movieAdapter)
         binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         binding.recyclerView.adapter = movieAdapter
 
@@ -72,7 +77,24 @@ class MoviesFragment : Fragment() {
             startActivity(intent)
             activity?.finish()
             auth.signOut()
+        }
 
+        binding.chipYear.setOnCheckedChangeListener { compoundButton, b ->
+            if (b){
+                binding.chipRate.isChecked = false
+                viewModel.getFilm("year",firestore, movieList, movieAdapter)
+            }else{
+                viewModel.getFilm("date", firestore, movieList, movieAdapter)
+            }
+        }
+
+        binding.chipRate.setOnCheckedChangeListener { compoundButton, b ->
+            if (b){
+                binding.chipYear.isChecked = false
+                viewModel.getFilm("rate",firestore, movieList, movieAdapter)
+            }else{
+                viewModel.getFilm("date", firestore, movieList, movieAdapter)
+            }
         }
     }
 

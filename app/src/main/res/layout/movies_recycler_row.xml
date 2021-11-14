@@ -4,15 +4,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/black"
-    android:padding="10dp"
+    android:padding="15dp"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/movieImage"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

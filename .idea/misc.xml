@@ -27,15 +27,17 @@
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/drawable/ic_orange_star.xml" value="0.3310810810810811" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/drawable/ic_password.xml" value="0.3310810810810811" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/drawable/ic_send.xml" value="0.375" />
+        <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/drawable/ic_sort.xml" value="0.3310810810810811" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/drawable/ic_splash_logo.xml" value="0.3310810810810811" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/drawable/splash_image.xml" value="0.3310810810810811" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/activity_main.xml" value="0.3171171171171171" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/chat_recycler_row.xml" value="0.33" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/fragment_admin.xml" value="0.3171171171171171" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/fragment_details_movie.xml" value="0.33" />
-        <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/fragment_movies.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/fragment_movies.xml" value="0.25" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/fragment_user_sign_in.xml" value="0.3171171171171171" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/movies_recycler_row.xml" value="0.3171171171171171" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/layout/slide_item_container.xml" value="0.3171171171171171" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19144144144144143" />
         <entry key="..\:/Users/meteb/Desktop/Kotlin Project/Thinqeek/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19144144144144143" />

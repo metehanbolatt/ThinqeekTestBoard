@@ -120,9 +120,9 @@ class AdminFragment : Fragment() {
                                     val downloadUrl = it.toString()
                                     val movieMap = hashMapOf<String, Any>()
                                     movieMap["name"] = binding.movieName.text.toString()
-                                    movieMap["year"] = binding.movieYear.text.toString()
+                                    movieMap["year"] = binding.movieYear.text.toString().toInt()
                                     movieMap["comment"] = binding.movieComment.text.toString()
-                                    movieMap["rate"] = binding.movieRate.text.toString()
+                                    movieMap["rate"] = binding.movieRate.text.toString().toDouble()
                                     movieMap["downloadUrl"] = downloadUrl
                                     movieMap["date"] = Timestamp.now()
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="800">
+       <KeyFrameSet>
+       </KeyFrameSet>
+        <OnClick motion:targetId="@+id/sortIcon" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/yearRateLinear"
+            motion:layout_constraintEnd_toEndOf="@id/sortIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/sortIcon"
+            android:layout_marginEnd="1dp"
+            motion:layout_constraintTop_toTopOf="@id/sortIcon"
+            android:alpha="0" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/yearRateLinear"
+            motion:layout_constraintEnd_toEndOf="@id/sortIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/sortIcon"
+            android:layout_marginEnd="40dp"
+            motion:layout_constraintTop_toTopOf="@id/sortIcon"
+            android:alpha="1" />
+    </ConstraintSet>
+</MotionScene>

@@ -11,8 +11,8 @@ class MoviesFragmentViewModel : ViewModel() {
 
     var isClickable = MutableLiveData(false)
 
-    fun getFilm(firestore: FirebaseFirestore, movieList: ArrayList<Movies>, adapter: MoviesRecyclerAdapter){
-        firestore.collection("Movies").orderBy("date",Query.Direction.DESCENDING).addSnapshotListener { value, error ->
+    fun getFilm(query: String, firestore: FirebaseFirestore, movieList: ArrayList<Movies>, adapter: MoviesRecyclerAdapter){
+        firestore.collection("Movies").orderBy(query, Query.Direction.DESCENDING).addSnapshotListener { value, error ->
             if (error == null){
                 if (value != null){
                     if (!value.isEmpty){
@@ -21,9 +21,9 @@ class MoviesFragmentViewModel : ViewModel() {
                         for (movie in movies){
                             val myMovie = Movies(
                                 movie["name"].toString(),
-                                movie["year"].toString(),
+                                movie["year"].toString().toInt(),
                                 movie["comment"].toString(),
-                                movie["rate"].toString(),
+                                movie["rate"].toString().toDouble(),
                                 movie["downloadUrl"].toString(),
                                 movie["date"].toString()
                             )

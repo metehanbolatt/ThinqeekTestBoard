@@ -40,9 +40,6 @@ class DetailsMovieFragment : Fragment() {
     private var movieDownloadUrl = ""
     private var movieRate = ""
 
-    private var adminOneEmail = ""
-    private var adminTwoEmail = ""
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,8 +60,6 @@ class DetailsMovieFragment : Fragment() {
             movieDownloadUrl = DetailsMovieFragmentArgs.fromBundle(it).downloadUrl!!
             movieRate = DetailsMovieFragmentArgs.fromBundle(it).rate!!
         }
-
-        getAdminData()
 
         return view
     }
@@ -123,27 +118,6 @@ class DetailsMovieFragment : Fragment() {
         }
     }
 
-    private fun adminControl() {
-        val currentUser = auth.currentUser?.email.toString()
-        if (currentUser == adminOneEmail || currentUser == adminTwoEmail){
-            binding.addChatButton.visibility = View.INVISIBLE
-            binding.addChat.visibility = View.INVISIBLE
-        }else{
-            binding.addChatButton.visibility = View.VISIBLE
-            binding.addChat.visibility = View.VISIBLE
-        }
-    }
-
-    private fun getAdminData(){
-        firestore.collection("Admin").document("Admin").get().addOnSuccessListener { document ->
-            if (document != null){
-                adminOneEmail = document["metehan"] as String
-                adminTwoEmail = document["kutay"] as String
-            }
-            adminControl()
-        }
-    }
-
     private fun starCount(rate : Double){
 
         if (rate <= 2 && rate > 0){
@@ -196,7 +170,6 @@ class DetailsMovieFragment : Fragment() {
                 binding.fourthStar.setImageResource(R.drawable.ic_orange_star)
                 binding.fifthStar.setImageResource(R.drawable.ic_half_star)
             }
-
         }
     }
 

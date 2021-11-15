@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -44,7 +45,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipYear"
-            android:layout_width="65dp"
+            android:layout_width="70dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginEnd="10dp"
@@ -60,7 +61,7 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipRate"
-            android:layout_width="60dp"
+            android:layout_width="70dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:checkable="true"
@@ -85,22 +86,10 @@
         android:layout_marginBottom="20dp"
         android:clickable="false"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toTopOf="@id/adminButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appName" />
-
-    <Button
-        android:id="@+id/adminButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#DD2C00"
-        android:text="Film Ekle"
-        android:textAllCaps="false"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/exitImage"

@@ -6,7 +6,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="800">
+        motion:duration="500">
        <KeyFrameSet>
        </KeyFrameSet>
         <OnClick motion:targetId="@+id/sortIcon" />
@@ -21,7 +21,8 @@
             motion:layout_constraintBottom_toBottomOf="@id/sortIcon"
             android:layout_marginEnd="1dp"
             motion:layout_constraintTop_toTopOf="@id/sortIcon"
-            android:alpha="0" />
+            android:alpha="0"
+            android:visibility="invisible" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -33,6 +34,7 @@
             motion:layout_constraintBottom_toBottomOf="@id/sortIcon"
             android:layout_marginEnd="40dp"
             motion:layout_constraintTop_toTopOf="@id/sortIcon"
-            android:alpha="1" />
+            android:alpha="1"
+            android:visibility="visible" />
     </ConstraintSet>
 </MotionScene>

@@ -6,6 +6,18 @@
     <string name="film_adi">Film adı</string>
     <string name="yil">Yıl</string>
     <string name="puan">Puan</string>
-    <string name="comment">Film hakkındaki yorumların...</string>
+    <string name="comment">Film hakkındaki yorumların…</string>
     <string name="ekle">Ekle</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Vestibulum aliquet tincidunt tortor a bibendum.
+        Curabitur blandit arcu sit amet neque tincidunt, vel tempus magna ultrices.
+        Aenean metus enim, eleifend vel est et, placerat sollicitudin est.
+        Fusce arcu nulla, imperdiet ut ligula quis, sollicitudin feugiat dolor.
+        Curabitur at mauris et dui malesuada egestas eget quis diam.
+        Pellentesque varius justo quis nisi consectetur, vestibulum laoreet justo tristique.
+        Duis tincidunt sit amet elit ac porttitor. Nulla tristique in turpis et hendrerit.
+        Praesent et erat tincidunt, aliquam urna sit amet, fringilla massa.
+        Integer sit amet volutpat lacus. Maecenas quis finibus ex, et viverra diam.</string>
+
 </resources>

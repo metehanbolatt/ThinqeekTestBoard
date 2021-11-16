@@ -3,8 +3,6 @@ package com.metehanbolat.thinqeek.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.metehanbolat.thinqeek.databinding.MoviesRecyclerRowBinding

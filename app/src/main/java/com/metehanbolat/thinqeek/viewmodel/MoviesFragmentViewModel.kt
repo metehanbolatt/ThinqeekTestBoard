@@ -30,6 +30,7 @@ class MoviesFragmentViewModel : ViewModel() {
                             movieList.add(myMovie)
                         }
                         adapter.notifyDataSetChanged()
+                        isClickable.value = true
                     }
                 }
             }

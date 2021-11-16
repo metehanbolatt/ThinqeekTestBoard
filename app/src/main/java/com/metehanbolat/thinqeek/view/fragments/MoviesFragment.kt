@@ -62,8 +62,10 @@ class MoviesFragment : Fragment() {
         binding.chipYear.setOnCheckedChangeListener { compoundButton, b ->
             if (b){
                 binding.chipRate.isChecked = false
+                viewModel.isClickable.value = false
                 viewModel.getFilm("year",firestore, movieList, movieAdapter)
             }else{
+                viewModel.isClickable.value = false
                 viewModel.getFilm("date", firestore, movieList, movieAdapter)
             }
         }
@@ -71,8 +73,10 @@ class MoviesFragment : Fragment() {
         binding.chipRate.setOnCheckedChangeListener { compoundButton, b ->
             if (b){
                 binding.chipYear.isChecked = false
+                viewModel.isClickable.value = false
                 viewModel.getFilm("rate",firestore, movieList, movieAdapter)
             }else{
+                viewModel.isClickable.value = false
                 viewModel.getFilm("date", firestore, movieList, movieAdapter)
             }
         }

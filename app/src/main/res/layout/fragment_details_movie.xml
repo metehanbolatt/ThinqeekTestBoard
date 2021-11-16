@@ -76,85 +76,105 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/detailsMovieComment"
+    <ScrollView
+        android:id="@+id/detailsScroll"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:orientation="vertical"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="6dp"
-        android:justificationMode="inter_word"
-        android:text="Deneme "
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@id/starsLinearLayout"
         app:layout_constraintStart_toStartOf="@id/starsLinearLayout"
-        app:layout_constraintTop_toBottomOf="@id/starsLinearLayout" />
+        app:layout_constraintTop_toBottomOf="@id/starsLinearLayout">
 
-    <TextView
-        android:id="@+id/commentsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Yorumlar"
-        android:textColor="#00C853"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/detailsMovieComment"
-        app:layout_constraintTop_toBottomOf="@id/detailsMovieComment" />
+        <TextView
+            android:id="@+id/detailsMovieComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gotham_book"
+            android:textStyle="bold"
+            android:lineSpacingExtra="5dp"
+            android:justificationMode="inter_word"
+            android:text="@string/lorem_ipsum"
+            android:textColor="@color/white" />
+    </ScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/commentsText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/emptyRecyclerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="İlk yorumu siz yazın.."
-        android:visibility="invisible"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/commentsText"
-        app:layout_constraintTop_toBottomOf="@id/commentsText" />
-
-    <EditText
-        android:id="@+id/addChat"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/black"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/add_chat_background"
-        android:hint="Senin yorumun..."
-        android:maxLines="1"
-        android:padding="4dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="16sp"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <ImageView
-        android:id="@+id/addChatButton"
-        android:layout_width="20dp"
-        android:layout_height="0dp"
-        android:layout_margin="4dp"
-        android:background="@color/purple_500"
-        android:padding="3dp"
-        android:src="@drawable/ic_send"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@id/addChat"
-        app:layout_constraintEnd_toEndOf="@id/addChat"
-        app:layout_constraintTop_toTopOf="@id/addChat" />
+        <TextView
+            android:id="@+id/commentsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Yorumlar"
+            android:textColor="#00C853"
+            android:background="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/chatRecycler"
+            app:layout_constraintBottom_toTopOf="@id/chatRecycler" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/black"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@id/addChat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/emptyRecyclerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="İlk yorumu siz yazın.."
+            android:background="@color/black"
+            android:visibility="invisible"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/chatRecycler"
+            app:layout_constraintTop_toTopOf="@id/chatRecycler"/>
+
+        <EditText
+            android:id="@+id/addChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/add_chat_background"
+            android:hint="Senin yorumun..."
+            android:maxLines="1"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/addChatButton"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:background="@color/purple_500"
+            android:padding="3dp"
+            android:src="@drawable/ic_send"
+            app:layout_constraintBottom_toBottomOf="@id/addChat"
+            app:layout_constraintEnd_toEndOf="@id/addChat"
+            app:layout_constraintTop_toTopOf="@id/addChat" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
